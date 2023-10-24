@@ -1,6 +1,8 @@
 import { Body, Controller, Post } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { LineService } from './line.service';
 
+@ApiTags('Line Webhook')
 @Controller('api/line/webhook')
 export class LineController {
   constructor(private readonly lineService: LineService) {}
