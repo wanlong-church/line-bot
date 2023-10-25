@@ -3,7 +3,7 @@
     <img 
       src="https://www.wlchurch.org.tw/mw/cufiles/images/web/logo.webp" 
       width="200" 
-      alt="Nest Logo" 
+      alt="Wanlong church logo" 
     />
   </a>
 </p>
