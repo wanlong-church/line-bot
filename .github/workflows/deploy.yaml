@@ -1,0 +1,32 @@
+name: Deploy to Google App Engine
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Render app.yaml
+        uses: nowactions/envsubst@v1
+        env:
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+        with:
+          with:
+          input: ./app.yaml.tmpl
+          output: ./app.yaml
+
+      - name: Authenticate with gcloud
+        uses: 'google-github-actions/auth@v1'
+        with:
+          credentials_json: '${{ secrets.SA_JSON}}'
+          service_account: 'wl-church@appspot.gserviceaccount.com'
+      
+      - name: 'deploy'
+        uses: 'google-github-actions/deploy-appengine@v1'

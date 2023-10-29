@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { LineController } from './line.controller';
 import { LineService } from './line.service';
-import exp from 'constants';
 
 describe('LineController', () => {
   let lineController: LineController;
@@ -17,14 +16,11 @@ describe('LineController', () => {
 
   describe('postMessageWebhook', () => {
     it('should raise on empty body', async () => {
-      expect(lineController.postMessageWebhook({}))
-      .rejects
-      .toThrow(TypeError);
+      expect(lineController.postMessageWebhook({})).rejects.toThrow(TypeError);
     });
 
     it('should return success on empty event', async () => {
-      lineController.postMessageWebhook({events: []})
-      .then((result) => {
+      lineController.postMessageWebhook({ events: [] }).then((result) => {
         expect(result).toBe('Webhook processed successfully');
       });
     });
