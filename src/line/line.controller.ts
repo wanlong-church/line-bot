@@ -11,9 +11,4 @@ export class LineController {
     return this.lineService.postMessageWebhook(body);
   }
 
-  @Get()
-  async getStatus(): Promise<string> {
-    // receives webhook from line, echo message back to line, and replay with 200
-    return 'ok';
-  }
 }
